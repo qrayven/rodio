@@ -18,7 +18,8 @@ use cpal::FromSample;
 /// playing.
 pub struct Sink {
     queue_tx: Arc<queue::SourcesQueueInput<f32>>,
-    sleep_until_end: Mutex<Option<Receiver<()>>>,
+    /// The receiver that will be used to sleep until the end of the sound
+    pub sleep_until_end: Mutex<Option<Receiver<()>>>,
 
     controls: Arc<Controls>,
     sound_count: Arc<AtomicUsize>,
